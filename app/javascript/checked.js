@@ -7,18 +7,20 @@ function check() {
 
   posts.forEach(function (post) {
     if (post.getAttribute("data-load") != null) {
-       // getAttributeで属性値を取得することができ、"data-load"を取得する。data-loadが空ではないとき。
+       // getAttributeで属性値である"data-load"を取得。そのdata-loadがnull(空)ではない時。（data-loadがある時）
+      
       return null;
       // JavaScriptの処理から抜け出す。エラーが出た場合に、下記に記述されている処理を行わないようにする。
     }
-    
+    // debugger
     post.setAttribute("data-load", "true");
-    // メモをクリックした場合に実行する処理を定義している
+    //data-loadをセット（追加）する
 
     post.addEventListener("click", () => {
       // addEventListenerメソッドを使用し、引数にclickの指定
+
       const postId = post.getAttribute("data-id");
-      // getAttributeで属性値を取得することができ、メモのidを取得することができる
+      // getAttributeで属性値を取得することができ、data-idを取得することができる
 
       const XHR = new XMLHttpRequest();
       // 変数XHRから、XMLHttpRequestのメソッドを使用できるようにする

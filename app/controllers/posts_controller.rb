@@ -8,8 +8,12 @@ class PostsController < ApplicationController
   # end
 
   def create
-    Post.create(content: params[:content])
-    redirect_to action: :index
+    # メモ作成時に未読の情報を保存する
+    post = Post.create(content: params[:content], checked: false)
+    # レスポンスをJSONに変更
+    render json:{ post: post }
+    # Post.create(content: params[:content])
+    # redirect_to action: :index
   end
 
   def checked
