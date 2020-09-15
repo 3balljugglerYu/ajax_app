@@ -26,7 +26,7 @@ function check() {
       // 変数XHRから、XMLHttpRequestのメソッドを使用できるようにする
 
       XHR.open("GET", `/posts/${postId}`, true);
-      // openメソッドを使用してリクエストの詳細を指定
+      // openメソッドを使用してリクエストの詳細を指定（HTTPメソッドはGET、パスは/posts、非同期通信はtrue)
 
       XHR.responseType = "json";
       // responseTypeメソッドを使用して、レスポンスの形式を指定
@@ -50,9 +50,15 @@ function check() {
         // XHR.responseでレスポンスされてきたJSONにアクセスできる(checkedアクションで返却されたitemを取得)
 
         if (item.checked === true) {
+          // item.checkedがのカラムがtrue(1)だった場合
+
           post.setAttribute("data-check", "true");
+          // data-check="true"を追加してください
+
         } else if (item.checked === false) {
+
           post.removeAttribute("data-check");
+          // data-checkを外してください
         }
       };
     });

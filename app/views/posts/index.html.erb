@@ -1,8 +1,15 @@
 <h1>AjaxApp</h1>
   <%= form_with url: "/posts", method: :post,id: "form" do |form| %>
-  <%= form.text_field :content %>
+  <%= form.text_field :content  , id: "content"%>
+  <%# memo.jsのcontentを取得するためid: "content"を追記。 %>
   <%= form.submit '投稿する' , id: "submit" %>
+  <%# submitのidを、getElementByIdを用いて「投稿する」ボタンの情報をmemo.jsで取得する %>
 <% end %>
+
+<%# 投稿後にメモを追加する要素を追記 %>
+<div id="list">
+</div>
+
 
 <%# <h1>Top page</h1>
 <%= link_to "新規投稿するよ！", "/posts/new" %> 

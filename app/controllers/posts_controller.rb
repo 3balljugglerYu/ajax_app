@@ -18,12 +18,16 @@ class PostsController < ApplicationController
 
   def checked
     post = Post.find(params[:id])
+    # ルーティングのURLパラメーターから、既読したメモのidが渡されるように設定するparamsの中身は、contentのid
     if post.checked 
+      # post.checkedのカラムが１の時はtrue, 0の時はfalse
+
       post.update(checked: false)
-      # 「既読を解除するためにfalseへ変更」
+      # 既読であれば(カラムが１であれば)「既読を解除するためにfalseへ変更」
     else
+
       post.update(checked: true)
-      # 「既読にするためtrueへ変更」
+      # 既読でなければ(カラムが0であれば)「既読にするためtrueへ変更」
     end
 
     item = Post.find(params[:id])
